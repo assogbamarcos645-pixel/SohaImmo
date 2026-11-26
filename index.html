@@ -79,6 +79,19 @@ tailwind.config = {
   .carousel-slide {
     scroll-snap-align: start;
   }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
 </style>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -329,6 +342,54 @@ tailwind.config = {
   </div>
 </section>
 
+<!-- Témoignages (exemples : à remplacer par de vrais avis clients avant la mise en ligne) -->
+<section id="temoignages" class="py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-white to-amber-50">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Ils nous ont fait confiance</span>
+      <h2 class="text-3xl lg:text-5xl font-extrabold mt-3 mb-4 text-dark">Ce que disent nos clients</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-8 shadow-lg relative">
+        <i class="fas fa-quote-right absolute top-6 right-6 text-4xl text-blue-100"></i>
+        <div class="flex text-amber-400 mb-4" aria-label="5 étoiles sur 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-secondary leading-relaxed mb-6">« J'ai trouvé mon entrer-coucher près du campus en trois jours. Tout était clair : l'avance, la caution, la commission. Aucune mauvaise surprise. »</p>
+        <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+          <div class="w-12 h-12 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold text-lg">R</div>
+          <div>
+            <div class="font-bold text-dark">Rachidatou A.</div>
+            <div class="text-xs text-secondary">Étudiante · Entrer-coucher à Tankpè, Abomey-Calavi</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-8 shadow-lg relative">
+        <i class="fas fa-quote-right absolute top-6 right-6 text-4xl text-blue-100"></i>
+        <div class="flex text-amber-400 mb-4" aria-label="5 étoiles sur 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-secondary leading-relaxed mb-6">« La visite s'est faite le samedi, le contrat était écrit et j'ai payé par Mobile Money avec un reçu. Je recommande à ma famille. »</p>
+        <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+          <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg">C</div>
+          <div>
+            <div class="font-bold text-dark">Cyrille H.</div>
+            <div class="text-xs text-secondary">Fonctionnaire · 2 chambres salon à Akpakpa, Cotonou</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-8 shadow-lg relative">
+        <i class="fas fa-quote-right absolute top-6 right-6 text-4xl text-blue-100"></i>
+        <div class="flex text-amber-400 mb-4" aria-label="5 étoiles sur 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-secondary leading-relaxed mb-6">« Depuis la France, j'avais peur des arnaques. L'agence a vérifié les papiers à l'ANDF et m'a montré la parcelle en vidéo WhatsApp avant chaque paiement. »</p>
+        <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+          <div class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-lg">M</div>
+          <div>
+            <div class="font-bold text-dark">Mireille D.</div>
+            <div class="text-xs text-secondary">Diaspora, Paris · Parcelle de 500 m² à Ouèdo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Contact -->
 <section id="contact" class="py-20 lg:py-28 bg-light">
   <div class="container mx-auto px-4 lg:px-8">
@@ -477,6 +538,15 @@ tailwind.config = {
   </div>
 </footer>
 
+<!-- Photo en plein écran -->
+<div id="lightbox" class="fixed inset-0 z-[60] bg-black/95 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Photo en plein écran">
+  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+  <button id="lightbox-close" type="button" onclick="closeLightbox()" class="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl transition" aria-label="Fermer"><i class="fas fa-times"></i></button>
+  <button type="button" onclick="lightboxStep(-1)" class="lightbox-nav absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition" aria-label="Photo précédente"><i class="fas fa-chevron-left"></i></button>
+  <button type="button" onclick="lightboxStep(1)" class="lightbox-nav absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition" aria-label="Photo suivante"><i class="fas fa-chevron-right"></i></button>
+  <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 text-sm font-semibold"></div>
+</div>
+
 <!-- Bouton WhatsApp flottant -->
 <a href="https://wa.me/2290100000002" target="_blank" rel="noopener" aria-label="WhatsApp" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl transition-all hover:scale-110 z-40">
   <i class="fab fa-whatsapp"></i>
@@ -514,7 +584,7 @@ tailwind.config = {
   // Location : prix = loyer mensuel ; avance / caution / commission en nombre de mois.
   const properties = [
     {
-      id: 1, transaction: 'Location', type: 'Entrer-coucher',
+      id: 1, badge: 'Nouveau', transaction: 'Location', type: 'Entrer-coucher',
       titre: 'Entrer-coucher sanitaire neuf', ville: 'Abomey-Calavi', quartier: 'Tankpè',
       prix: 20000, chambres: 1, surface: 0,
       avance: 3, caution: 1, commission: 1,
@@ -523,7 +593,7 @@ tailwind.config = {
       caracteristiques: ['Douche et WC internes', 'Carrelé', 'Compteur SBEE à carte', 'Eau SONEB', 'Cour commune', 'Parking moto']
     },
     {
-      id: 2, transaction: 'Location', type: 'Chambre salon',
+      id: 2, badge: 'Disponible maintenant', transaction: 'Location', type: 'Chambre salon',
       titre: 'Chambre salon sanitaire à Fidjrossè', ville: 'Cotonou', quartier: 'Fidjrossè',
       prix: 45000, chambres: 1, surface: 0,
       avance: 3, caution: 2, commission: 1,
@@ -541,7 +611,7 @@ tailwind.config = {
       caracteristiques: ['2 douches internes', 'Cuisine', 'Balcon', 'Compteur SBEE individuel', 'Eau SONEB', 'Parking voiture']
     },
     {
-      id: 4, transaction: 'Location', type: 'Appartement meublé',
+      id: 4, badge: 'Disponible maintenant', transaction: 'Location', type: 'Appartement meublé',
       titre: 'Appartement meublé climatisé', ville: 'Cotonou', quartier: 'Haie Vive',
       prix: 400000, chambres: 2, surface: 0,
       avance: 2, caution: 1, commission: 1,
@@ -550,7 +620,7 @@ tailwind.config = {
       caracteristiques: ['Meublé et équipé', 'Climatisation', 'Groupe électrogène', 'Gardien 24h/24', 'Forage + SONEB', 'Wifi']
     },
     {
-      id: 5, transaction: 'Location', type: 'Villa',
+      id: 5, badge: 'Nouveau', transaction: 'Location', type: 'Villa',
       titre: 'Villa 4 chambres salon avec cour', ville: 'Cotonou', quartier: 'Cadjèhoun',
       prix: 500000, chambres: 4, surface: 0,
       avance: 6, caution: 2, commission: 1,
@@ -577,7 +647,7 @@ tailwind.config = {
       caracteristiques: ['Zone lotie', 'Zone habitée', 'Courant SBEE à proximité', 'Paiement échelonné']
     },
     {
-      id: 8, transaction: 'Vente', type: 'Parcelle',
+      id: 8, badge: 'Papiers vérifiés', transaction: 'Vente', type: 'Parcelle',
       titre: 'Demi-lot 250 m² avec CPF', ville: 'Sèmè-Podji', quartier: 'Ekpè',
       prix: 4500000, chambres: 0, surface: 250,
       documents: 'Certificat de propriété foncière (CPF)', echelonne: false,
@@ -586,7 +656,7 @@ tailwind.config = {
       caracteristiques: ['CPF disponible', 'Terrain sec', 'Accès voie pavée', 'Eau et courant à proximité']
     },
     {
-      id: 9, transaction: 'Vente', type: 'Maison / Villa',
+      id: 9, badge: 'Papiers vérifiés', transaction: 'Vente', type: 'Maison / Villa',
       titre: 'Villa 3 chambres salon sur un lot', ville: 'Cotonou', quartier: 'Fidjrossè',
       prix: 85000000, chambres: 3, surface: 500,
       documents: 'Titre foncier', echelonne: false,
@@ -595,7 +665,7 @@ tailwind.config = {
       caracteristiques: ['Titre foncier', 'Lot de 500 m²', 'Dépendance', 'Forage', 'Compteur SBEE individuel', 'Clôturée']
     },
     {
-      id: 10, transaction: 'Vente', type: 'Parcelle',
+      id: 10, badge: 'Nouveau', transaction: 'Vente', type: 'Parcelle',
       titre: 'Parcelle 500 m² proche route des pêches', ville: 'Ouidah', quartier: 'Pahou',
       prix: 6000000, chambres: 0, surface: 500,
       documents: 'Convention de vente affirmée à la mairie', echelonne: true,
@@ -612,6 +682,7 @@ tailwind.config = {
 
   let transaction = 'Location';
   let currentSlide = 0;
+  let currentImages = [];
 
   const formatPrice = price => new Intl.NumberFormat('fr-FR').format(price).replace(/\u202f|\u00a0/g, ' ') + ' FCFA';
   const priceLabel = prop => formatPrice(prop.prix) + (prop.transaction === 'Location' ? ' <span class="text-sm font-semibold text-secondary">/ mois</span>' : '');
@@ -639,6 +710,40 @@ tailwind.config = {
     applyFilters();
   }
 
+  const BADGE_STYLES = {
+    'Nouveau': 'bg-rose-500 text-white',
+    'Disponible maintenant': 'bg-white text-green-700',
+    'Papiers vérifiés': 'bg-white text-primary'
+  };
+  const BADGE_ICONS = {
+    'Nouveau': 'fa-bolt',
+    'Disponible maintenant': 'fa-door-open',
+    'Papiers vérifiés': 'fa-shield-alt'
+  };
+
+  const revealObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.addEventListener('transitionend', () => {
+            el.classList.remove('reveal', 'visible');
+            el.style.transitionDelay = '';
+          }, { once: true });
+          el.classList.add('visible');
+          revealObserver.unobserve(el);
+        }
+      }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+    : null;
+
+  function revealOnScroll(elements) {
+    if (!revealObserver) return;
+    elements.forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${(i % 3) * 100}ms`;
+      revealObserver.observe(el);
+    });
+  }
+
   function renderProperties(props) {
     const grid = document.getElementById('properties-grid');
     const noResults = document.getElementById('no-results');
@@ -651,9 +756,12 @@ tailwind.config = {
 
     noResults.classList.add('hidden');
     grid.innerHTML = props.map(prop => `
-      <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="openPropertyModal(${prop.id})">
+      <div class="property-card group bg-white rounded-2xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="openPropertyModal(${prop.id})">
         <div class="relative h-56 overflow-hidden">
-          <img src="${prop.images[0]}" alt="${prop.titre}" loading="lazy" class="w-full h-full object-cover">
+          <img src="${prop.images[0]}" alt="${prop.titre}" loading="lazy" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+          <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent"></div>
+          ${prop.badge ? `<div class="absolute bottom-4 left-4 ${BADGE_STYLES[prop.badge] || 'bg-white text-dark'} px-3 py-1 rounded-full text-xs font-bold shadow"><i class="fas ${BADGE_ICONS[prop.badge] || 'fa-star'} mr-1"></i>${prop.badge}</div>` : ''}
+          ${prop.images.length > 1 ? `<div class="absolute bottom-4 right-4 bg-black/60 text-white px-2.5 py-1 rounded-full text-xs font-semibold"><i class="fas fa-camera mr-1"></i>${prop.images.length}</div>` : ''}
           <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1.5 rounded-lg text-sm font-semibold">${prop.type}</div>
           <div class="absolute top-4 right-4 ${prop.transaction === 'Location' ? 'bg-green-500' : 'bg-amber-500'} text-white px-3 py-1.5 rounded-lg text-sm font-semibold">
             ${prop.transaction === 'Location' ? 'À louer' : 'À vendre'}
@@ -678,6 +786,7 @@ tailwind.config = {
         </div>
       </div>
     `).join('');
+    revealOnScroll(grid.querySelectorAll('.property-card'));
   }
 
   function applyFilters() {
@@ -739,9 +848,12 @@ tailwind.config = {
           <div id="carousel-container" class="carousel-container flex overflow-x-auto h-full">
             ${prop.images.map((src, i) => `
               <div class="carousel-slide w-full h-full flex-shrink-0">
-                <img src="${src}" alt="${prop.titre} - Photo ${i + 1}" class="w-full h-full object-cover">
+                <img src="${src}" alt="${prop.titre} - Photo ${i + 1}" class="w-full h-full object-cover cursor-zoom-in" onclick="openLightbox(${i})">
               </div>`).join('')}
           </div>
+          <button type="button" onclick="openLightbox(currentSlide)" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white px-3 py-1.5 rounded-full text-sm font-semibold transition" aria-label="Agrandir la photo">
+            <i class="fas fa-expand mr-1"></i><span id="carousel-counter">1 / ${prop.images.length}</span>
+          </button>
           ${prop.images.length > 1 ? `
             <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition shadow-lg" aria-label="Photo précédente">
               <i class="fas fa-chevron-left text-primary"></i>
@@ -750,9 +862,16 @@ tailwind.config = {
               <i class="fas fa-chevron-right text-primary"></i>
             </button>
             <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-              ${prop.images.map((_, i) => `<button onclick="goToSlide(${i})" class="h-2 rounded-full transition ${i === 0 ? 'bg-white w-8' : 'bg-white/50 w-2'}"></button>`).join('')}
+              ${prop.images.map((_, i) => `<button onclick="goToSlide(${i})" class="h-2 rounded-full transition ${i === 0 ? 'bg-white w-8' : 'bg-white/50 w-2'}" aria-label="Photo ${i + 1}"></button>`).join('')}
             </div>` : ''}
         </div>
+        ${prop.images.length > 1 ? `
+          <div id="carousel-thumbs" class="flex gap-3 mt-3 overflow-x-auto">
+            ${prop.images.map((src, i) => `
+              <button type="button" onclick="goToSlide(${i})" class="flex-shrink-0 w-20 h-14 sm:w-24 sm:h-16 rounded-lg overflow-hidden ring-2 transition ${i === 0 ? 'ring-primary' : 'ring-transparent opacity-60 hover:opacity-100'}" aria-label="Voir la photo ${i + 1}">
+                <img src="${src}" alt="" class="w-full h-full object-cover">
+              </button>`).join('')}
+          </div>` : ''}
       </div>
 
       <div class="grid lg:grid-cols-3 gap-8">
@@ -798,6 +917,13 @@ tailwind.config = {
       </div>
     `;
 
+    currentImages = prop.images;
+    const carousel = document.getElementById('carousel-container');
+    carousel.addEventListener('scroll', () => {
+      const index = Math.round(carousel.scrollLeft / carousel.clientWidth);
+      if (index !== currentSlide) updateSlideIndicators(index);
+    }, { passive: true });
+
     const modal = document.getElementById('property-modal');
     modal.classList.add('active');
     modal.classList.remove('opacity-0', 'invisible');
@@ -811,16 +937,58 @@ tailwind.config = {
     document.body.style.overflow = '';
   };
 
-  window.goToSlide = function(index) {
-    const container = document.getElementById('carousel-container');
+  function updateSlideIndicators(index) {
     currentSlide = index;
-    container.scrollTo({ left: index * container.clientWidth, behavior: 'smooth' });
     document.querySelectorAll('#carousel-dots button').forEach((dot, i) => {
       dot.classList.toggle('bg-white', i === currentSlide);
       dot.classList.toggle('w-8', i === currentSlide);
       dot.classList.toggle('bg-white/50', i !== currentSlide);
       dot.classList.toggle('w-2', i !== currentSlide);
     });
+    document.querySelectorAll('#carousel-thumbs button').forEach((thumb, i) => {
+      thumb.classList.toggle('ring-primary', i === currentSlide);
+      thumb.classList.toggle('ring-transparent', i !== currentSlide);
+      thumb.classList.toggle('opacity-60', i !== currentSlide);
+    });
+    const counter = document.getElementById('carousel-counter');
+    if (counter) counter.textContent = `${currentSlide + 1} / ${currentImages.length}`;
+  }
+
+  window.goToSlide = function(index) {
+    const container = document.getElementById('carousel-container');
+    container.scrollTo({ left: index * container.clientWidth, behavior: 'smooth' });
+    updateSlideIndicators(index);
+  };
+
+  let lightboxIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const isLightboxOpen = () => !lightbox.classList.contains('hidden');
+
+  function showLightboxImage() {
+    const image = document.getElementById('lightbox-img');
+    image.src = currentImages[lightboxIndex];
+    image.alt = `${document.getElementById('modal-title').textContent} - Photo ${lightboxIndex + 1}`;
+    document.getElementById('lightbox-counter').textContent = `${lightboxIndex + 1} / ${currentImages.length}`;
+    lightbox.querySelectorAll('.lightbox-nav').forEach(btn => btn.classList.toggle('hidden', currentImages.length < 2));
+  }
+
+  window.openLightbox = function(index) {
+    lightboxIndex = index;
+    showLightboxImage();
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.getElementById('lightbox-close').focus();
+  };
+
+  window.closeLightbox = function() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    goToSlide(lightboxIndex);
+  };
+
+  window.lightboxStep = function(direction) {
+    lightboxIndex = (lightboxIndex + direction + currentImages.length) % currentImages.length;
+    showLightboxImage();
   };
 
   window.changeSlide = function(direction) {
@@ -859,7 +1027,17 @@ tailwind.config = {
   document.getElementById('property-modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    const modalOpen = document.getElementById('property-modal').classList.contains('active');
+    if (e.key === 'Escape') {
+      isLightboxOpen() ? closeLightbox() : closeModal();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      const direction = e.key === 'ArrowLeft' ? -1 : 1;
+      if (isLightboxOpen()) lightboxStep(direction);
+      else if (modalOpen && currentImages.length > 1) changeSlide(direction);
+    }
+  });
 
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -887,6 +1065,7 @@ tailwind.config = {
 
   // Init
   setTransaction('Location');
+  revealOnScroll(document.querySelectorAll('section:not(#accueil) .container > div, #etapes .grid > div, #temoignages .grid > div'));
 </script>
 
 </body>
