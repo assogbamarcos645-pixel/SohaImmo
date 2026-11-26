@@ -429,8 +429,8 @@ tailwind.config = {
       <div>
         <h4 class="text-white font-bold mb-4">Services</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="#biens" class="hover:text-white transition">Location de logements</a></li>
-          <li><a href="#biens" class="hover:text-white transition">Vente de parcelles</a></li>
+          <li><a href="#biens" data-transaction="Location" class="footer-tab hover:text-white transition">Location de logements</a></li>
+          <li><a href="#biens" data-transaction="Vente" class="footer-tab hover:text-white transition">Vente de parcelles</a></li>
           <li><a href="#services" class="hover:text-white transition">Gestion locative</a></li>
           <li><a href="#services" class="hover:text-white transition">Diaspora</a></li>
         </ul>
@@ -809,7 +809,7 @@ tailwind.config = {
     });
   });
 
-  document.querySelectorAll('.tab-btn, .hero-tab').forEach(btn => {
+  document.querySelectorAll('.tab-btn, .hero-tab, .footer-tab').forEach(btn => {
     btn.addEventListener('click', () => setTransaction(btn.dataset.transaction));
   });
 
