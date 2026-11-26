@@ -828,6 +828,12 @@ tailwind.config = {
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const val = id => document.getElementById(id).value.trim();
+    const blank = ['cf-nom', 'cf-tel', 'cf-message'].filter(id => !val(id));
+    if (blank.length) {
+      blank.forEach(id => { document.getElementById(id).value = ''; });
+      this.reportValidity();
+      return;
+    }
     const lines = [
       'Bonjour Soha Immo,',
       `Je m'appelle ${val('cf-nom')} (${val('cf-tel')}).`,
