@@ -1030,7 +1030,13 @@ tailwind.config = {
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => {
     const modalOpen = document.getElementById('property-modal').classList.contains('active');
-    if (e.key === 'Escape') {
+    if (e.key === 'Tab' && isLightboxOpen()) {
+      const controls = [...lightbox.querySelectorAll('button:not(.hidden)')];
+      const index = controls.indexOf(document.activeElement);
+      const next = e.shiftKey ? (index <= 0 ? controls.length - 1 : index - 1) : (index + 1) % controls.length;
+      e.preventDefault();
+      controls[next].focus();
+    } else if (e.key === 'Escape') {
       isLightboxOpen() ? closeLightbox() : closeModal();
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
       const direction = e.key === 'ArrowLeft' ? -1 : 1;
