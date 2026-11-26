@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soha Immo - Agence immobilière à Cotonou</title>
-<meta name="description" content="Soha Immo, votre agence immobilière de confiance à Cotonou. Votre confort, fait notre joie. Vente et location de biens immobiliers à Cotonou.">
+<meta name="description" content="Soha Immo, votre agence immobilière de confiance à Cotonou. Votre confort, fait notre joie. Location (entrer-coucher, chambre salon, appartements meublés, villas) et vente de parcelles et maisons à Cotonou, Abomey-Calavi, Sèmè-Podji et environs.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script>
@@ -31,7 +31,7 @@ tailwind.config = {
     scroll-behavior: smooth;
   }
   .hero-gradient {
-    background: linear-gradient(135deg, rgba(30,64,175,0.95) 0%, rgba(51,65,85,0.9) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop') center/cover;
+    background: linear-gradient(135deg, rgba(30,64,175,0.95) 0%, rgba(51,65,85,0.9) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=60&w=1280&auto=format&fit=crop') center/cover;
   }
   .card-hover {
     transition: all 0.3s ease;
@@ -40,7 +40,7 @@ tailwind.config = {
     transform: translateY(-8px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
-  .filter-btn.active {
+  .tab-btn.active {
     background-color: #1e40af;
     color: white;
   }
@@ -70,6 +70,10 @@ tailwind.config = {
   .carousel-container {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .carousel-container::-webkit-scrollbar {
+    display: none;
   }
   .carousel-slide {
     scroll-snap-align: start;
@@ -98,19 +102,20 @@ tailwind.config = {
           <p class="text-xs text-secondary -mt-1">Votre confort, fait notre joie</p>
         </div>
       </a>
-      
+
       <div class="hidden lg:flex items-center space-x-8">
         <a href="#accueil" class="text-secondary hover:text-primary font-medium transition-colors">Accueil</a>
         <a href="#biens" class="text-secondary hover:text-primary font-medium transition-colors">Nos biens</a>
-        <a href="#apropos" class="text-secondary hover:text-primary font-medium transition-colors">À propos</a>
+        <a href="#services" class="text-secondary hover:text-primary font-medium transition-colors">Services</a>
+        <a href="#etapes" class="text-secondary hover:text-primary font-medium transition-colors">Comment ça marche</a>
         <a href="#contact" class="text-secondary hover:text-primary font-medium transition-colors">Contact</a>
-        <a href="tel:0151352416" class="flex items-center space-x-2 bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-blue-800 transition-all shadow-lg shadow-blue-500/30">
+        <a href="tel:+2290151352416" class="flex items-center space-x-2 bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-blue-800 transition-all shadow-lg shadow-blue-500/30">
           <i class="fas fa-phone-alt text-sm"></i>
           <span class="font-semibold">01 51 35 24 16</span>
         </a>
       </div>
 
-      <button id="mobile-menu-btn" class="lg:hidden text-primary text-2xl">
+      <button id="mobile-menu-btn" class="lg:hidden text-primary text-2xl" aria-label="Menu">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -119,9 +124,10 @@ tailwind.config = {
     <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4 space-y-3">
       <a href="#accueil" class="block text-secondary hover:text-primary font-medium py-2">Accueil</a>
       <a href="#biens" class="block text-secondary hover:text-primary font-medium py-2">Nos biens</a>
-      <a href="#apropos" class="block text-secondary hover:text-primary font-medium py-2">À propos</a>
+      <a href="#services" class="block text-secondary hover:text-primary font-medium py-2">Services</a>
+      <a href="#etapes" class="block text-secondary hover:text-primary font-medium py-2">Comment ça marche</a>
       <a href="#contact" class="block text-secondary hover:text-primary font-medium py-2">Contact</a>
-      <a href="tel:0151352416" class="flex items-center justify-center space-x-2 bg-primary text-white px-5 py-3 rounded-lg">
+      <a href="tel:+2290151352416" class="flex items-center justify-center space-x-2 bg-primary text-white px-5 py-3 rounded-lg">
         <i class="fas fa-phone-alt"></i>
         <span class="font-semibold">01 51 35 24 16</span>
       </a>
@@ -130,99 +136,79 @@ tailwind.config = {
 </header>
 
 <!-- Hero Section -->
-<section id="accueil" class="hero-gradient min-h-screen flex items-center pt-20">
+<section id="accueil" class="hero-gradient min-h-screen flex items-center pt-24 pb-12">
   <div class="container mx-auto px-4 lg:px-8">
     <div class="max-w-3xl text-white animate-fadeInUp">
       <div class="inline-block bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
         <i class="fas fa-map-marker-alt mr-2"></i>
-        <span class="text-sm font-medium">Agence immobilière à Cotonou, Bénin</span>
+        <span class="text-sm font-medium">Cotonou • Abomey-Calavi • Sèmè-Podji • Porto-Novo • Ouidah</span>
       </div>
-      <h2 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">
+      <h2 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">
         Votre confort,<br>fait notre <span class="text-blue-300">joie</span>
       </h2>
-      <p class="text-xl lg:text-2xl mb-8 text-gray-200 font-light leading-relaxed">
-        Soha Immo vous accompagne dans la recherche, la vente et la location de biens immobiliers d'exception à Cotonou et ses environs.
+      <p class="text-lg lg:text-2xl mb-8 text-gray-200 font-light leading-relaxed">
+        Entrer-coucher, chambre salon, appartement meublé, villa ou parcelle : dites-nous ce que vous cherchez et votre budget, on s'occupe du reste.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#biens" class="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-center hover:bg-gray-100 transition-all shadow-xl hover:scale-105 transform duration-300">
-          Découvrir nos biens
-          <i class="fas fa-arrow-right ml-2"></i>
+        <a href="#biens" data-transaction="Location" class="hero-tab bg-white text-primary px-8 py-4 rounded-lg font-semibold text-center hover:bg-gray-100 transition-all shadow-xl">
+          <i class="fas fa-key mr-2"></i>Je veux louer
         </a>
-        <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-center hover:bg-white hover:text-primary transition-all">
-          Nous contacter
+        <a href="#biens" data-transaction="Vente" class="hero-tab bg-white text-primary px-8 py-4 rounded-lg font-semibold text-center hover:bg-gray-100 transition-all shadow-xl">
+          <i class="fas fa-file-signature mr-2"></i>Je veux acheter
+        </a>
+        <a href="https://wa.me/2290151352416?text=Bonjour%20Soha%20Immo%2C%20je%20cherche%20un%20bien." target="_blank" rel="noopener" class="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-center hover:bg-green-600 transition-all">
+          <i class="fab fa-whatsapp mr-2"></i>Écrire sur WhatsApp
         </a>
       </div>
-      <div class="grid grid-cols-3 gap-6 mt-16 pt-8 border-t border-white/20">
+      <div class="grid grid-cols-3 gap-4 sm:gap-6 mt-12 pt-8 border-t border-white/20">
         <div>
-          <div class="text-4xl font-bold mb-1">150+</div>
-          <div class="text-sm text-gray-300">Biens vendus</div>
+          <div class="text-2xl sm:text-4xl font-bold mb-1">Visite</div>
+          <div class="text-xs sm:text-sm text-gray-300">sur rendez-vous, même le samedi</div>
         </div>
         <div>
-          <div class="text-4xl font-bold mb-1">98%</div>
-          <div class="text-sm text-gray-300">Clients satisfaits</div>
+          <div class="text-2xl sm:text-4xl font-bold mb-1">Papiers</div>
+          <div class="text-xs sm:text-sm text-gray-300">vérifiés avant tout paiement</div>
         </div>
         <div>
-          <div class="text-4xl font-bold mb-1">5 ans</div>
-          <div class="text-sm text-gray-300">D'expérience</div>
+          <div class="text-2xl sm:text-4xl font-bold mb-1">MoMo</div>
+          <div class="text-xs sm:text-sm text-gray-300">paiement Mobile Money accepté</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Biens en vitrine + Filtres -->
+<!-- Biens + Filtres -->
 <section id="biens" class="py-20 lg:py-28 bg-white">
   <div class="container mx-auto px-4 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Notre sélection</span>
-      <h2 class="text-4xl lg:text-5xl font-extrabold mt-3 mb-4 text-dark">Biens en vitrine</h2>
-      <p class="text-lg text-secondary">Découvrez une sélection de nos meilleures propriétés disponibles à Cotonou.</p>
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Nos biens disponibles</span>
+      <h2 class="text-3xl lg:text-5xl font-extrabold mt-3 mb-4 text-dark">À louer ou à vendre</h2>
+      <p class="text-lg text-secondary">Les loyers sont indiqués par mois. Les conditions (avance, caution, commission) sont affichées sur chaque bien.</p>
+    </div>
+
+    <!-- Location / Vente -->
+    <div class="flex justify-center mb-6">
+      <div class="inline-flex bg-light rounded-xl p-1 shadow-sm">
+        <button class="tab-btn active px-6 py-3 rounded-lg font-semibold text-secondary transition" data-transaction="Location"><i class="fas fa-key mr-2"></i>À louer</button>
+        <button class="tab-btn px-6 py-3 rounded-lg font-semibold text-secondary transition" data-transaction="Vente"><i class="fas fa-file-signature mr-2"></i>À vendre</button>
+      </div>
     </div>
 
     <!-- Filtres -->
     <div class="bg-light rounded-2xl p-6 mb-12 shadow-sm">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
-          <label class="block text-sm font-semibold text-secondary mb-2">Type de bien</label>
-          <select id="filter-type" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition">
-            <option value="all">Tous les types</option>
-            <option value="Villa">Villa</option>
-            <option value="Appartement">Appartement</option>
-            <option value="Maison">Maison</option>
-            <option value="Terrain">Terrain</option>
-          </select>
+          <label for="filter-type" class="block text-sm font-semibold text-secondary mb-2">Type de bien</label>
+          <select id="filter-type" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition"></select>
         </div>
         <div>
-          <label class="block text-sm font-semibold text-secondary mb-2">Quartier</label>
-          <select id="filter-quartier" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition">
-            <option value="all">Tous les quartiers</option>
-            <option value="Haie Vive">Haie Vive</option>
-            <option value="Fidjrossè">Fidjrossè</option>
-            <option value="Cadjèhoun">Cadjèhoun</option>
-            <option value="Akpakpa">Akpakpa</option>
-            <option value="Cocotiers">Cocotiers</option>
-            <option value="Gbégamey">Gbégamey</option>
-          </select>
+          <label for="filter-zone" class="block text-sm font-semibold text-secondary mb-2">Ville / quartier</label>
+          <select id="filter-zone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition"></select>
         </div>
         <div>
-          <label class="block text-sm font-semibold text-secondary mb-2">Prix max</label>
-          <select id="filter-prix" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition">
-            <option value="all">Tous les prix</option>
-            <option value="50000000">50000000 FCFA</option>
-            <option value="100000000">100000000 FCFA</option>
-            <option value="200000000">200000000 FCFA</option>
-            <option value="500000000">500000000 FCFA</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm font-semibold text-secondary mb-2">Surface min</label>
-          <select id="filter-surface" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition">
-            <option value="all">Toutes surfaces</option>
-            <option value="50">50 m²</option>
-            <option value="100">100 m²</option>
-            <option value="200">200 m²</option>
-            <option value="500">500 m²</option>
-          </select>
+          <label for="filter-prix" class="block text-sm font-semibold text-secondary mb-2" id="filter-prix-label">Loyer max (par mois)</label>
+          <select id="filter-prix" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition"></select>
         </div>
         <div class="flex items-end">
           <button id="reset-filters" class="w-full bg-secondary text-white px-4 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-all"><i class="fas fa-redo mr-2"></i>Réinitialiser</button>
@@ -230,169 +216,190 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Grille des biens -->
-    <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Les biens seront injectés par JS -->
-    </div>
+    <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
     <div id="no-results" class="hidden text-center py-16">
       <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
-      <p class="text-xl text-secondary">Aucun bien ne correspond à vos critères</p>
+      <p class="text-xl text-secondary mb-6">Aucun bien ne correspond pour le moment.</p>
+      <a href="#contact" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">Laissez-nous votre recherche, on vous rappelle</a>
     </div>
   </div>
 </section>
 
-<!-- À propos -->
-<section id="apropos" class="py-20 lg:py-28 bg-light">
-    <div class="container mx-auto px-4 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="relative">
-               <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=2073&auto=format&fit=crop" alt="Équipe Soha Immo" class="rounded-2xl shadow-2xl">
-                <div class="absolute bottom-6 right-6 bg-primary text-white p-8 rounded-2xl shadow-xl hidden lg:block">
-                   <div class="text-5xl font-bold mb-1">5+</div>
-                   <div class="text-sm">Années d'expertise<br>à Cotonou</div>
-                </div>
-            </div>
-            <span class="text-primary font-semibold text-sm uppercase tracking-wider">Qui sommes-nous ?</span>
-            <h2 class="text-4xl lg:text-5xl font-extrabold mt-3 mb-6 text-dark">À propos de Soha Immo</h2>
-            <p class="text-lg text-secondary mb-6 leading-relaxed">
-              Soha Immo est votre partenaire immobilier de confiance à Cotonou. Depuis notre création, nous mettons notre expertise et notre connaissance du marché local au service de vos projets immobiliers.
-            </p>
-            <p class="text-lg text-secondary mb-8 leading-relaxed">
-               Notre slogan "Votre confort, fait notre joie" reflète notre engagement : vous offrir un accompagnement personnalisé et des biens sélectionnés avec soin pour répondre à vos besoins et dépasser vos attentes.
-            </p>
-            <div class="grid sm:grid-cols-2 gap-6 mb-8">
-               <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i class="fas fa-handshake text-primary text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-dark mb-1">Accompagnement</h3>
-                        <p class="text-sm text-secondary">De la visite à la signature</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-shield-alt text-primary text-xl"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-dark mb-1">Sécurité</h3>
-                    <p class="text-sm text-secondary">Transactions sécurisées</p>
-                </div>
-            </div>
-         
+<!-- Services -->
+<section id="services" class="py-20 lg:py-28 bg-light">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=60&w=900&auto=format&fit=crop" alt="Équipe Soha Immo" loading="lazy" class="rounded-2xl shadow-2xl w-full">
+      </div>
+      <div>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Qui sommes-nous ?</span>
+        <h2 class="text-3xl lg:text-5xl font-extrabold mt-3 mb-6 text-dark">Soha Immo, l'immobilier au Bénin sans stress</h2>
+        <p class="text-lg text-secondary mb-8 leading-relaxed">
+          Trouver une maison ou une parcelle au Bénin, c'est souvent des jours de recherche, des démarcheurs qui se multiplient et des papiers douteux. Notre engagement : des biens réellement visités, des conditions claires et des documents vérifiés.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-6">
           <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-chart-line text-primary text-xl"></i>
-            </div>
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-key text-primary text-xl"></i></div>
             <div>
-              <h3 class="font-bold text-dark mb-1">Expertise</h3>
-              <p class="text-sm text-secondary">Connaissance du marché</p>
+              <h3 class="font-bold text-dark mb-1">Location</h3>
+              <p class="text-sm text-secondary">Entrer-coucher, chambre salon, appartements, villas, boutiques</p>
             </div>
           </div>
           <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-heart text-primary text-xl"></i>
-            </div>
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-map text-primary text-xl"></i></div>
             <div>
-              <h3 class="font-bold text-dark mb-1">Passion</h3>
-              <p class="text-sm text-secondary">Votre satisfaction d'abord</p>
+              <h3 class="font-bold text-dark mb-1">Vente de parcelles</h3>
+              <p class="text-sm text-secondary">Lots et demi-lots avec vérification foncière</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-user-tie text-primary text-xl"></i></div>
+            <div>
+              <h3 class="font-bold text-dark mb-1">Gestion locative</h3>
+              <p class="text-sm text-secondary">Propriétaires : on trouve vos locataires et on suit les loyers</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-globe-africa text-primary text-xl"></i></div>
+            <div>
+              <h3 class="font-bold text-dark mb-1">Béninois de la diaspora</h3>
+              <p class="text-sm text-secondary">Visite en vidéo WhatsApp et suivi à distance</p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comment ça marche -->
+<section id="etapes" class="py-20 lg:py-28 bg-white">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">Comment ça marche</span>
+      <h2 class="text-3xl lg:text-5xl font-extrabold mt-3 mb-4 text-dark">De la recherche à la remise des clés</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div class="bg-light rounded-2xl p-6">
+        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4">1</div>
+        <h3 class="font-bold text-dark mb-2">Votre besoin</h3>
+        <p class="text-sm text-secondary">Type de bien, quartier, budget : envoyez-nous un message WhatsApp ou appelez-nous.</p>
+      </div>
+      <div class="bg-light rounded-2xl p-6">
+        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4">2</div>
+        <h3 class="font-bold text-dark mb-2">La visite</h3>
+        <p class="text-sm text-secondary">On fixe un rendez-vous et on vous accompagne sur place (ou en vidéo si vous êtes loin).</p>
+      </div>
+      <div class="bg-light rounded-2xl p-6">
+        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4">3</div>
+        <h3 class="font-bold text-dark mb-2">Les papiers</h3>
+        <p class="text-sm text-secondary">Contrat de bail écrit pour une location ; vérification des documents fonciers avant tout achat.</p>
+      </div>
+      <div class="bg-light rounded-2xl p-6">
+        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4">4</div>
+        <h3 class="font-bold text-dark mb-2">Paiement et clés</h3>
+        <p class="text-sm text-secondary">Paiement contre reçu, par Mobile Money (MTN, Moov, Celtiis), virement ou espèces.</p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="border-2 border-gray-200 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-dark mb-4"><i class="fas fa-key text-primary mr-2"></i>Pour louer, prévoyez</h3>
+        <ul class="space-y-3 text-secondary text-sm">
+          <li><i class="fas fa-check-circle text-primary mr-2"></i><strong>L'avance</strong> : quelques mois de loyer payés d'avance (le nombre est indiqué sur chaque bien).</li>
+          <li><i class="fas fa-check-circle text-primary mr-2"></i><strong>La caution</strong> : remboursable à la sortie si le logement est rendu en bon état.</li>
+          <li><i class="fas fa-check-circle text-primary mr-2"></i><strong>La commission</strong> de l'agence : en général un mois de loyer, payée une seule fois.</li>
+          <li><i class="fas fa-check-circle text-primary mr-2"></i><strong>Électricité et eau</strong> : vérifiez si le compteur SBEE est individuel ou si c'est un décompteur, et si l'eau vient de la SONEB ou d'un forage.</li>
+        </ul>
+      </div>
+      <div class="border-2 border-gray-200 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-dark mb-4"><i class="fas fa-map text-primary mr-2"></i>Pour acheter une parcelle, exigez</h3>
+        <ul class="space-y-3 text-secondary text-sm">
+          <li><i class="fas fa-check-circle text-primary mr-2"></i>Le document de propriété : <strong>titre foncier / certificat de propriété foncière (CPF)</strong>, ou à défaut attestation de recasement et convention de vente.</li>
+          <li><i class="fas fa-check-circle text-primary mr-2"></i>Une vérification de la situation de la parcelle auprès de l'<strong>ANDF</strong> et de la mairie avant de payer.</li>
+          <li><i class="fas fa-check-circle text-primary mr-2"></i>Une <strong>convention de vente</strong> signée devant témoins et affirmée à la mairie, ou un acte notarié.</li>
+          <li><i class="fas fa-check-circle text-primary mr-2"></i>Ne jamais payer en espèces sans reçu ; paiement échelonné possible sur certains lots.</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Contact -->
-<section id="contact" class="py-20 lg:py-28 bg-white">
+<section id="contact" class="py-20 lg:py-28 bg-light">
   <div class="container mx-auto px-4 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="text-primary font-semibold text-sm uppercase tracking-wider">Contactez-nous</span>
-      <h2 class="text-4xl lg:text-5xl font-extrabold mt-3 mb-4 text-dark">Parlons de votre projet</h2>
-      <p class="text-lg text-secondary">Notre équipe est à votre écoute pour concrétiser vos projets immobiliers.</p>
+      <h2 class="text-3xl lg:text-5xl font-extrabold mt-3 mb-4 text-dark">Dites-nous ce que vous cherchez</h2>
+      <p class="text-lg text-secondary">Remplissez le formulaire : votre demande s'ouvre directement dans WhatsApp, prête à être envoyée.</p>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-8">
       <div class="lg:col-span-2">
-        <form id="contact-form" class="bg-light rounded-2xl p-8 shadow-sm">
+        <form id="contact-form" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm">
           <div class="grid md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label class="block text-sm font-semibold text-secondary mb-2">Nom complet *</label>
-              <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="Votre nom">
+              <label for="cf-nom" class="block text-sm font-semibold text-secondary mb-2">Nom complet *</label>
+              <input id="cf-nom" type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="Votre nom">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-secondary mb-2">Téléphone *</label>
-              <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="+229 XX XX XX XX XX">
+              <label for="cf-tel" class="block text-sm font-semibold text-secondary mb-2">Téléphone / WhatsApp *</label>
+              <input id="cf-tel" type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="01 XX XX XX XX">
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="cf-sujet" class="block text-sm font-semibold text-secondary mb-2">Je souhaite</label>
+              <select id="cf-sujet" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition">
+                <option>Louer un logement</option>
+                <option>Acheter une parcelle</option>
+                <option>Acheter une maison</option>
+                <option>Mettre mon bien en location</option>
+                <option>Vendre mon bien</option>
+                <option>Autre demande</option>
+              </select>
+            </div>
+            <div>
+              <label for="cf-budget" class="block text-sm font-semibold text-secondary mb-2">Budget (FCFA)</label>
+              <input id="cf-budget" type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="Ex : 50 000 FCFA / mois">
             </div>
           </div>
           <div class="mb-6">
-            <label class="block text-sm font-semibold text-secondary mb-2">Email *</label>
-            <input type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="votre@email.com">
+            <label for="cf-message" class="block text-sm font-semibold text-secondary mb-2">Votre recherche *</label>
+            <textarea id="cf-message" required rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="Ex : chambre salon à Fidjrossè ou Agla, compteur individuel, disponible le mois prochain"></textarea>
           </div>
-          <div class="mb-6">
-            <label class="block text-sm font-semibold text-secondary mb-2">Sujet</label>
-            <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition">
-              <option>Achat d'un bien</option>
-              <option>Location d'un bien</option>
-              <option>Vente de mon bien</option>
-              <option>Estimation gratuite</option>
-              <option>Autre demande</option>
-            </select>
-          </div>
-          <div class="mb-6">
-            <label class="block text-sm font-semibold text-secondary mb-2">Message *</label>
-            <textarea required rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-blue-200 outline-none transition" placeholder="Décrivez votre projet..."></textarea>
-          </div>
-          <button type="submit" class="w-full bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-all shadow-lg shadow-blue-500/30">
-            Envoyer le message
-            <i class="fas fa-paper-plane ml-2"></i>
+          <button type="submit" class="w-full bg-green-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-600 transition-all shadow-lg">
+            <i class="fab fa-whatsapp mr-2"></i>Envoyer sur WhatsApp
           </button>
         </form>
       </div>
 
       <div class="space-y-6">
         <div class="bg-primary text-white rounded-2xl p-8 shadow-lg">
-          <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-phone-alt text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Téléphone</h3>
-          <a href="tel:0151352416" class="text-lg hover:underline">01 51 35 24 16</a>
+          <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-phone-alt text-2xl"></i></div>
+          <h3 class="text-xl font-bold mb-2">Appel / WhatsApp</h3>
+          <a href="tel:+2290151352416" class="text-lg hover:underline">+229 01 51 35 24 16</a>
           <p class="text-sm text-blue-200 mt-2">Lun - Sam : 8h - 19h</p>
         </div>
 
         <div class="bg-secondary text-white rounded-2xl p-8 shadow-lg">
-          <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-envelope text-2xl"></i>
-          </div>
+          <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-envelope text-2xl"></i></div>
           <h3 class="text-xl font-bold mb-2">Email</h3>
           <a href="mailto:assogbamarcos97@gmail.com" class="text-sm hover:underline break-all">assogbamarcos97@gmail.com</a>
-          <p class="text-sm text-gray-300 mt-2">Réponse sous 24h</p>
         </div>
 
-        <div class="bg-light border-2 border-gray-200 rounded-2xl p-8">
-          <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-dark">Localisation</h3>
-          <p class="text-secondary">Cotonou, Bénin</p>
-          <p class="text-sm text-secondary mt-2">Nous intervenons sur toute la ville et les environs</p>
+        <div class="bg-white border-2 border-gray-200 rounded-2xl p-8">
+          <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4"><i class="fas fa-map-marker-alt text-primary text-2xl"></i></div>
+          <h3 class="text-xl font-bold mb-2 text-dark">Zones couvertes</h3>
+          <p class="text-secondary">Cotonou, Abomey-Calavi, Sèmè-Podji, Porto-Novo, Ouidah</p>
         </div>
       </div>
     </div>
 
-    <!-- Map -->
-    <div class="mt-12 rounded-2xl overflow-hidden shadow-lg h-96">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126916.78774034722!2d2.320035!3d6.372465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023556d3c3c3c3d%3A0x6b3c3c3c!2sCotonou%2C%20B%C3%A9nin!5e0!3m2!1sfr!2sfr!4v1234567890" 
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div class="mt-12 rounded-2xl overflow-hidden shadow-lg h-80">
+      <iframe src="https://maps.google.com/maps?q=Cotonou%2C%20B%C3%A9nin&z=12&output=embed" title="Carte de Cotonou" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -401,84 +408,52 @@ tailwind.config = {
 <footer class="bg-dark text-gray-300 py-12">
   <div class="container mx-auto px-4 lg:px-8">
     <div class="grid md:grid-cols-4 gap-8 mb-8">
-
-      <!-- Logo + description -->
       <div>
         <div class="flex items-center space-x-2 mb-4">
-          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <i class="fas fa-home text-white"></i>
-          </div>
+          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center"><i class="fas fa-home text-white"></i></div>
           <h3 class="text-xl font-extrabold text-white">Soha Immo</h3>
         </div>
-
-        <p class="text-sm text-gray-400 leading-relaxed">
-          Votre confort fait notre joie. Agence immobilière de confiance à Cotonou.
-        </p>
+        <p class="text-sm text-gray-400 leading-relaxed">Votre confort fait notre joie. Location et vente de biens immobiliers au Bénin.</p>
       </div>
 
-      <!-- Navigation -->
       <div>
         <h4 class="text-white font-bold mb-4">Navigation</h4>
         <ul class="space-y-2 text-sm">
           <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
           <li><a href="#biens" class="hover:text-white transition">Nos biens</a></li>
-          <li><a href="#apropos" class="hover:text-white transition">À propos</a></li>
+          <li><a href="#services" class="hover:text-white transition">Services</a></li>
           <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
         </ul>
       </div>
 
-      <!-- Services -->
       <div>
         <h4 class="text-white font-bold mb-4">Services</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-white transition">Vente immobilière</a></li>
-          <li><a href="#" class="hover:text-white transition">Location</a></li>
-          <li><a href="#" class="hover:text-white transition">Estimation gratuite</a></li>
-          <li><a href="#" class="hover:text-white transition">Conseil en investissement</a></li>
+          <li><a href="#biens" class="hover:text-white transition">Location de logements</a></li>
+          <li><a href="#biens" class="hover:text-white transition">Vente de parcelles</a></li>
+          <li><a href="#services" class="hover:text-white transition">Gestion locative</a></li>
+          <li><a href="#services" class="hover:text-white transition">Diaspora</a></li>
         </ul>
       </div>
 
-      <!-- Contact -->
       <div>
         <h4 class="text-white font-bold mb-4">Contact</h4>
         <ul class="space-y-2 text-sm">
-          <li class="flex items-start space-x-2">
-            <i class="fas fa-phone-alt mt-1 text-primary"></i>
-            <a href="tel:0151352416" class="hover:text-white transition">01 51 35 24 16</a>
-          </li>
-          <li class="flex items-start space-x-2">
-            <i class="fas fa-envelope mt-1 text-primary"></i>
-            <a href="mailto:assogbamarcos97@gmail.com" class="hover:text-white transition break-all">
-              assogbamarcos97@gmail.com
-            </a>
-          </li>
-          <li class="flex items-start space-x-2">
-            <i class="fas fa-map-marker-alt mt-1 text-primary"></i>
-            <span>Cotonou, Bénin</span>
-          </li>
+          <li class="flex items-start space-x-2"><i class="fas fa-phone-alt mt-1 text-primary"></i><a href="tel:+2290151352416" class="hover:text-white transition">01 51 35 24 16</a></li>
+          <li class="flex items-start space-x-2"><i class="fas fa-envelope mt-1 text-primary"></i><a href="mailto:assogbamarcos97@gmail.com" class="hover:text-white transition break-all">assogbamarcos97@gmail.com</a></li>
+          <li class="flex items-start space-x-2"><i class="fas fa-map-marker-alt mt-1 text-primary"></i><span>Cotonou, Bénin</span></li>
         </ul>
       </div>
-
     </div>
 
-    <!-- Bottom bar -->
-    <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-      <p>
-        &copy; 2026 Soha Immo. <br>
-        <strong>ASSOGBA Marcos</strong> - Tous droits réservés.
-      </p>
-
-      <div class="flex space-x-6 mt-4 md:mt-0">
-        <a href="#" class="hover:text-white transition">Mentions légales</a>
-        <a href="#" class="hover:text-white transition">Politique de confidentialité</a>
-        <a href="#" class="hover:text-white transition">CGU</a>
-      </div>
+    <div class="border-t border-gray-700 pt-8 text-sm text-gray-400">
+      <p>&copy; 2026 Soha Immo. <strong>ASSOGBA Marcos</strong> - Tous droits réservés.</p>
     </div>
   </div>
 </footer>
 
 <!-- Bouton WhatsApp flottant -->
-<a href="https://wa.me/2290151352416" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl transition-all hover:scale-110 z-40">
+<a href="https://wa.me/2290151352416" target="_blank" rel="noopener" aria-label="WhatsApp" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl transition-all hover:scale-110 z-40">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -486,234 +461,261 @@ tailwind.config = {
 <div id="property-modal" class="modal fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 invisible flex items-center justify-center p-4">
   <div class="modal-content bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
     <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <h3 id="modal-title" class="text-2xl font-bold text-dark"></h3>
-      <button id="close-modal" class="w-10 h-10 rounded-lg hover:bg-gray-100 flex items-center justify-center transition">
+      <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-dark"></h3>
+      <button id="close-modal" class="w-10 h-10 rounded-lg hover:bg-gray-100 flex items-center justify-center transition" aria-label="Fermer">
         <i class="fas fa-times text-xl text-secondary"></i>
       </button>
     </div>
-    <div id="modal-content" class="p-6">
-      <!-- Contenu injecté par JS -->
-    </div>
+    <div id="modal-content" class="p-6"></div>
   </div>
 </div>
 
 <script>
-  // Données des biens
+  const WHATSAPP = '2290151352416';
+  const img = id => `https://images.unsplash.com/photo-${id}?q=60&w=800&auto=format&fit=crop`;
+
+  // Biens d'exemple : à remplacer par les vrais biens (et vraies photos) de l'agence.
+  // Location : prix = loyer mensuel ; avance / caution / commission en nombre de mois.
   const properties = [
     {
-      id: 1,
-      type: 'Villa',
-      titre: 'Villa moderne avec piscine',
-      localisation: 'Haie Vive, Cotonou',
-      quartier: 'Haie Vive',
-      prix: 250000000,
-      surface: 450,
-      chambres: 5,
-      salles_de_bain: 4,
-      images: [
-        'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop'
-      ],
-      description: 'Magnifique villa contemporaine située dans le quartier prisé de Haie Vive. Cette propriété d\'exception dispose d\'une piscine privée, d\'un grand jardin paysager et de finitions haut de gamme. Idéale pour une famille recherchant confort et standing.',
-      caracteristiques: ['Piscine', 'Jardin', 'Garage 2 voitures', 'Climatisation', 'Sécurité 24h/24', 'Cuisine équipée']
+      id: 1, transaction: 'Location', type: 'Entrer-coucher',
+      titre: 'Entrer-coucher sanitaire neuf', ville: 'Abomey-Calavi', quartier: 'Tankpè',
+      prix: 20000, chambres: 1, surface: 0,
+      avance: 3, caution: 1, commission: 1,
+      images: [img('1493809842364-78817add7ffb')],
+      description: 'Entrer-coucher propre dans une maison en bande, proche de l\'université d\'Abomey-Calavi. Idéal pour étudiant ou jeune travailleur.',
+      caracteristiques: ['Douche et WC internes', 'Carrelé', 'Compteur SBEE à carte', 'Eau SONEB', 'Cour commune', 'Parking moto']
     },
     {
-      id: 2,
-      type: 'Appartement',
-      titre: 'Appartement standing vue mer',
-      localisation: 'Fidjrossè, Cotonou',
-      quartier: 'Fidjrossè',
-      prix: 120000000,
-      surface: 180,
-      chambres: 3,
-      salles_de_bain: 2,
-      images: [
-        'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1502672265816-4b3a31fb2ca1?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop'
-      ],
-      description: 'Superbe appartement de standing avec vue imprenable sur l\'océan Atlantique. Entièrement rénové avec des matériaux de qualité, il offre de beaux volumes et une terrasse panoramique. Résidence sécurisée avec ascenseur.',
-      caracteristiques: ['Vue mer', 'Terrasse', 'Ascenseur', 'Gardien', 'Parking', 'Climatisation']
+      id: 2, transaction: 'Location', type: 'Chambre salon',
+      titre: 'Chambre salon sanitaire à Fidjrossè', ville: 'Cotonou', quartier: 'Fidjrossè',
+      prix: 45000, chambres: 1, surface: 0,
+      avance: 3, caution: 2, commission: 1,
+      images: [img('1505691938895-1758d7feb511'), img('1493809842364-78817add7ffb')],
+      description: 'Chambre salon avec douche interne, cuisine et petite terrasse, à quelques minutes de la plage de Fidjrossè. Maison calme et clôturée.',
+      caracteristiques: ['Douche et WC internes', 'Cuisine', 'Carrelé et plafonné', 'Compteur SBEE individuel', 'Eau SONEB', 'Portail et clôture']
     },
     {
-      id: 3,
-      type: 'Maison',
-      titre: 'Maison familiale quartier calme',
-      localisation: 'Cadjèhoun, Cotonou',
-      quartier: 'Cadjèhoun',
-      prix: 85000000,
-      surface: 320,
-      chambres: 4,
-      salles_de_bain: 3,
-      images: [
-        'https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop'
-      ],
-      description: 'Belle maison familiale dans un quartier résidentiel calme et sécurisé. Elle dispose d\'un grand salon, d\'une salle à manger, d\'une cuisine moderne et d\'un jardin. Proche des écoles et commodités.',
-      caracteristiques: ['Jardin', 'Garage', 'Buanderie', 'Climatisation', 'Château d\'eau', 'Groupe électrogène']
+      id: 3, transaction: 'Location', type: '2 chambres salon',
+      titre: 'Appartement 2 chambres salon', ville: 'Cotonou', quartier: 'Akpakpa',
+      prix: 80000, chambres: 2, surface: 0,
+      avance: 3, caution: 2, commission: 1,
+      images: [img('1545324418-cc1a3fa10c00'), img('1522708323590-d24dbb6b0267')],
+      description: 'Appartement au 1er étage, deux chambres dont une avec douche interne, grand salon, cuisine et balcon. Quartier animé, proche du marché et des voies pavées.',
+      caracteristiques: ['2 douches internes', 'Cuisine', 'Balcon', 'Compteur SBEE individuel', 'Eau SONEB', 'Parking voiture']
     },
     {
-      id: 4,
-      type: 'Villa',
-      titre: 'Villa de luxe bord de mer',
-      localisation: 'Cocotiers, Cotonou',
-      quartier: 'Cocotiers',
-      prix: 450000000,
-      surface: 650,
-      chambres: 6,
-      salles_de_bain: 5,
-      images: [
-        'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2084&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1600566753190-17f0baa8a6c3?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop'
-      ],
-      description: 'Propriété d\'exception en front de mer avec accès privé à la plage. Cette villa de luxe offre des prestations haut de gamme : piscine à débordement, spa, home cinéma, dépendances pour le personnel. Un bien rare sur le marché.',
-      caracteristiques: ['Accès plage privé', 'Piscine', 'Spa', 'Home cinéma', 'Dépendances', 'Sécurité renforcée']
+      id: 4, transaction: 'Location', type: 'Appartement meublé',
+      titre: 'Appartement meublé climatisé', ville: 'Cotonou', quartier: 'Haie Vive',
+      prix: 400000, chambres: 2, surface: 0,
+      avance: 2, caution: 1, commission: 1,
+      images: [img('1600607687939-ce8a6c25118c'), img('1484154218962-a197022b5858'), img('1505691938895-1758d7feb511')],
+      description: 'Appartement entièrement meublé et équipé dans une résidence sécurisée. Parfait pour expatrié, mission de travail ou membre de la diaspora de passage.',
+      caracteristiques: ['Meublé et équipé', 'Climatisation', 'Groupe électrogène', 'Gardien 24h/24', 'Forage + SONEB', 'Wifi']
     },
     {
-      id: 5,
-      type: 'Appartement',
-      titre: 'Appartement moderne centre-ville',
-      localisation: 'Gbégamey, Cotonou',
-      quartier: 'Gbégamey',
-      prix: 45000000,
-      surface: 95,
-      chambres: 2,
-      salles_de_bain: 1,
-      images:[
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop'
-      ],
-      description: 'Appartement moderne idéalement situé en centre-ville, parfait pour jeune couple ou investissement locatif. Proche de tous les commerces et transports. Entièrement meublé et équipé.',
-      caracteristiques: ['Meublé', 'Centre-ville', 'Climatisation', 'Balcon', 'Ascenseur', 'Internet fibre']
+      id: 5, transaction: 'Location', type: 'Villa',
+      titre: 'Villa 4 chambres salon avec cour', ville: 'Cotonou', quartier: 'Cadjèhoun',
+      prix: 500000, chambres: 4, surface: 0,
+      avance: 6, caution: 2, commission: 1,
+      images: [img('1600047509807-ba8f99d2cdde'), img('1600585154340-be6161a56a0c')],
+      description: 'Villa familiale en cour unique, 4 chambres avec douches internes, salon spacieux, cuisine, dépendance pour gardien et grand espace pour 3 voitures.',
+      caracteristiques: ['Cour unique', 'Dépendance', 'Château d\'eau', 'Compteur SBEE individuel', 'Climatisation', 'Garage 3 voitures']
     },
     {
-      id: 6,
-      type: 'Terrain',
-      titre: 'Terrain titré zone résidentielle',
-      localisation: 'Akpakpa, Cotonou',
-      quartier: 'Akpakpa',
-      prix: 35000000,
-      surface: 600,
-      chambres: 0,
-      salles_de_bain: 0,
-      images: [
-        'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2232&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2232&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2232&auto=format&fit=crop'
-      ],
-      description: 'Beau terrain plat de 600m², entièrement titré et viabilisé, situé dans une zone résidentielle en plein développement. Idéal pour construction d\'une villa ou immeuble R+2. Titre foncier disponible.',
-      caracteristiques: ['Titre foncier', 'Viabilisé', 'Zone résidentielle', 'Accès bitumé', 'Eau et électricité', 'Proche école']
+      id: 6, transaction: 'Location', type: 'Boutique / Magasin',
+      titre: 'Boutique en bordure de voie', ville: 'Abomey-Calavi', quartier: 'Godomey',
+      prix: 60000, chambres: 0, surface: 30,
+      avance: 6, caution: 1, commission: 1,
+      images: [img('1560518883-ce09059eeffa')],
+      description: 'Boutique de 30 m² sur voie bitumée très fréquentée, à proximité du carrefour de Godomey. Convient pour commerce, pharmacie ou bureau.',
+      caracteristiques: ['Bord de voie bitumée', 'Rideau métallique', 'Compteur SBEE individuel', 'Forte affluence']
+    },
+    {
+      id: 7, transaction: 'Vente', type: 'Parcelle',
+      titre: 'Parcelle 500 m² (1 lot)', ville: 'Abomey-Calavi', quartier: 'Ouèdo',
+      prix: 7500000, chambres: 0, surface: 500,
+      documents: 'Attestation de recasement + convention de vente', echelonne: true,
+      images: [img('1500382017468-9049fed747ef')],
+      description: 'Lot de 500 m² dans une zone lotie et habitée, à 10 minutes de la voie principale. Paiement possible en plusieurs tranches.',
+      caracteristiques: ['Zone lotie', 'Zone habitée', 'Courant SBEE à proximité', 'Paiement échelonné']
+    },
+    {
+      id: 8, transaction: 'Vente', type: 'Parcelle',
+      titre: 'Demi-lot 250 m² avec CPF', ville: 'Sèmè-Podji', quartier: 'Ekpè',
+      prix: 4500000, chambres: 0, surface: 250,
+      documents: 'Certificat de propriété foncière (CPF)', echelonne: false,
+      images: [img('1500382017468-9049fed747ef')],
+      description: 'Demi-lot sec et plat, situé dans un quartier en plein développement, accessible par voie pavée.',
+      caracteristiques: ['CPF disponible', 'Terrain sec', 'Accès voie pavée', 'Eau et courant à proximité']
+    },
+    {
+      id: 9, transaction: 'Vente', type: 'Maison / Villa',
+      titre: 'Villa 3 chambres salon sur un lot', ville: 'Cotonou', quartier: 'Fidjrossè',
+      prix: 85000000, chambres: 3, surface: 500,
+      documents: 'Titre foncier', echelonne: false,
+      images: [img('1580587771525-78b9dba3b914'), img('1613977257363-707ba9348227')],
+      description: 'Villa construite sur un lot de 500 m² avec titre foncier : 3 chambres avec douches internes, salon, cuisine, dépendance et grande cour. Possibilité d\'extension.',
+      caracteristiques: ['Titre foncier', 'Lot de 500 m²', 'Dépendance', 'Forage', 'Compteur SBEE individuel', 'Clôturée']
+    },
+    {
+      id: 10, transaction: 'Vente', type: 'Parcelle',
+      titre: 'Parcelle 500 m² proche route des pêches', ville: 'Ouidah', quartier: 'Pahou',
+      prix: 6000000, chambres: 0, surface: 500,
+      documents: 'Convention de vente affirmée à la mairie', echelonne: true,
+      images: [img('1500382017468-9049fed747ef')],
+      description: 'Parcelle de 500 m² dans une zone qui se développe rapidement entre Cotonou et Ouidah. Idéale pour investissement ou résidence secondaire.',
+      caracteristiques: ['Zone en développement', 'Proche route des pêches', 'Paiement échelonné']
     }
   ];
 
-  let currentSlide = 0;
-  let filteredProperties = [...properties];
+  const BUDGETS = {
+    Location: [25000, 50000, 100000, 250000, 500000],
+    Vente: [5000000, 10000000, 50000000, 100000000]
+  };
 
-  // Format prix
-  function formatPrice(price) {
-    return new Intl.NumberFormat('fr-FR').format(price) + ' FCFA';
+  let transaction = 'Location';
+  let currentSlide = 0;
+
+  const formatPrice = price => new Intl.NumberFormat('fr-FR').format(price).replace(/\u202f|\u00a0/g, ' ') + ' FCFA';
+  const priceLabel = prop => formatPrice(prop.prix) + (prop.transaction === 'Location' ? ' <span class="text-sm font-semibold text-secondary">/ mois</span>' : '');
+  const localisation = prop => `${prop.quartier}, ${prop.ville}`;
+  const waLink = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+
+  function fillSelect(id, values, allLabel, format = v => v) {
+    const select = document.getElementById(id);
+    select.innerHTML = `<option value="all">${allLabel}</option>` +
+      values.map(v => `<option value="${v}">${format(v)}</option>`).join('');
   }
 
-  // Rendu des cartes
+  function setupFilters() {
+    const list = properties.filter(p => p.transaction === transaction);
+    fillSelect('filter-type', [...new Set(list.map(p => p.type))], 'Tous les types');
+    fillSelect('filter-zone', [...new Set(list.map(p => p.ville))], 'Toutes les villes');
+    fillSelect('filter-prix', BUDGETS[transaction], 'Tous les budgets', v => 'Jusqu\'à ' + formatPrice(v));
+    document.getElementById('filter-prix-label').textContent = transaction === 'Location' ? 'Loyer max (par mois)' : 'Budget max';
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.transaction === transaction));
+  }
+
+  function setTransaction(value) {
+    transaction = value;
+    setupFilters();
+    applyFilters();
+  }
+
   function renderProperties(props) {
     const grid = document.getElementById('properties-grid');
     const noResults = document.getElementById('no-results');
-    
+
     if (props.length === 0) {
       grid.innerHTML = '';
       noResults.classList.remove('hidden');
       return;
     }
-    
+
     noResults.classList.add('hidden');
     grid.innerHTML = props.map(prop => `
       <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="openPropertyModal(${prop.id})">
-        <div class="relative h-64 overflow-hidden">
-          <img src="${prop.images[0]}" alt="${prop.titre}" class="w-full h-full object-cover">
-          <div class="absolute top-4 left-4 bg-primary text-white px-4 py-1.5 rounded-lg text-sm font-semibold">
-            ${prop.type}
+        <div class="relative h-56 overflow-hidden">
+          <img src="${prop.images[0]}" alt="${prop.titre}" loading="lazy" class="w-full h-full object-cover">
+          <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1.5 rounded-lg text-sm font-semibold">${prop.type}</div>
+          <div class="absolute top-4 right-4 ${prop.transaction === 'Location' ? 'bg-green-500' : 'bg-amber-500'} text-white px-3 py-1.5 rounded-lg text-sm font-semibold">
+            ${prop.transaction === 'Location' ? 'À louer' : 'À vendre'}
           </div>
-          ${prop.chambres > 0 ? `<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-dark px-3 py-1.5 rounded-lg text-sm font-semibold">
-            <i class="fas fa-bed mr-1"></i> ${prop.chambres}
-          </div>` : ''}
         </div>
         <div class="p-6">
           <h3 class="text-xl font-bold text-dark mb-2 line-clamp-1">${prop.titre}</h3>
           <div class="flex items-center text-secondary text-sm mb-4">
-            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-            ${prop.localisation}
+            <i class="fas fa-map-marker-alt text-primary mr-2"></i>${localisation(prop)}
           </div>
-          <div class="flex items-center justify-between text-sm text-secondary mb-4 pb-4 border-b border-gray-200">
-            ${prop.surface > 0 ? `<div class="flex items-center">
-              <i class="fas fa-ruler-combined text-primary mr-2"></i>
-              ${prop.surface} m²
-            </div>` : ''}
-            ${prop.salles_de_bain > 0 ? `<div class="flex items-center">
-              <i class="fas fa-bath text-primary mr-2"></i>
-              ${prop.salles_de_bain}
-            </div>` : ''}
+          <div class="flex flex-wrap gap-4 text-sm text-secondary mb-4 pb-4 border-b border-gray-200">
+            ${prop.chambres > 0 ? `<span><i class="fas fa-bed text-primary mr-1"></i>${prop.chambres} chambre${prop.chambres > 1 ? 's' : ''}</span>` : ''}
+            ${prop.surface > 0 ? `<span><i class="fas fa-ruler-combined text-primary mr-1"></i>${prop.surface} m²</span>` : ''}
+            ${prop.transaction === 'Location'
+              ? `<span><i class="fas fa-hand-holding-usd text-primary mr-1"></i>${prop.avance} mois d'avance</span>`
+              : `<span><i class="fas fa-file-alt text-primary mr-1"></i>${prop.documents}</span>`}
           </div>
           <div class="flex items-center justify-between">
-            <div class="text-2xl font-extrabold text-primary">${formatPrice(prop.prix)}</div>
-            <button class="text-primary hover:text-blue-800 font-semibold text-sm">
-              Voir détails <i class="fas fa-arrow-right ml-1"></i>
-            </button>
+            <div class="text-2xl font-extrabold text-primary">${priceLabel(prop)}</div>
+            <span class="text-primary font-semibold text-sm whitespace-nowrap">Détails <i class="fas fa-arrow-right ml-1"></i></span>
           </div>
         </div>
       </div>
     `).join('');
   }
 
-  // Filtrage
   function applyFilters() {
     const type = document.getElementById('filter-type').value;
-    const quartier = document.getElementById('filter-quartier').value;
+    const zone = document.getElementById('filter-zone').value;
     const prixMax = document.getElementById('filter-prix').value;
-    const surfaceMin = document.getElementById('filter-surface').value;
 
-    filteredProperties = properties.filter(prop => {
-      const matchType = type === 'all' || prop.type === type;
-      const matchQuartier = quartier === 'all' || prop.quartier === quartier;
-      const matchPrix = prixMax === 'all' || prop.prix <= parseInt(prixMax);
-      const matchSurface = surfaceMin === 'all' || prop.surface >= parseInt(surfaceMin);
-      return matchType && matchQuartier && matchPrix && matchSurface;
-    });
-
-    renderProperties(filteredProperties);
+    renderProperties(properties.filter(prop =>
+      prop.transaction === transaction &&
+      (type === 'all' || prop.type === type) &&
+      (zone === 'all' || prop.ville === zone) &&
+      (prixMax === 'all' || prop.prix <= parseInt(prixMax, 10))
+    ));
   }
 
-  // Modal détail
+  function conditionsHtml(prop) {
+    if (prop.transaction === 'Location') {
+      const rows = [
+        ['Avance', prop.avance], ['Caution', prop.caution], ['Commission', prop.commission]
+      ];
+      const total = (prop.avance + prop.caution + prop.commission) * prop.prix;
+      return `
+        <div class="space-y-3 mb-6 pb-6 border-b border-gray-200 text-sm">
+          ${rows.map(([label, mois]) => `
+            <div class="flex items-center justify-between">
+              <span class="text-secondary">${label} (${mois} mois)</span>
+              <span class="font-bold text-dark">${formatPrice(mois * prop.prix)}</span>
+            </div>`).join('')}
+          <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+            <span class="font-semibold text-dark">Total à l'entrée</span>
+            <span class="font-extrabold text-primary">${formatPrice(total)}</span>
+          </div>
+        </div>`;
+    }
+    return `
+      <div class="space-y-3 mb-6 pb-6 border-b border-gray-200 text-sm">
+        <div class="flex items-start justify-between gap-4">
+          <span class="text-secondary">Documents</span>
+          <span class="font-bold text-dark text-right">${prop.documents}</span>
+        </div>
+        ${prop.surface > 0 ? `<div class="flex items-center justify-between"><span class="text-secondary">Superficie</span><span class="font-bold text-dark">${prop.surface} m²</span></div>` : ''}
+        <div class="flex items-center justify-between">
+          <span class="text-secondary">Paiement échelonné</span>
+          <span class="font-bold text-dark">${prop.echelonne ? 'Possible' : 'Non'}</span>
+        </div>
+      </div>`;
+  }
+
   window.openPropertyModal = function(id) {
     const prop = properties.find(p => p.id === id);
     if (!prop) return;
 
     currentSlide = 0;
+    const message = `Bonjour Soha Immo, je suis intéressé(e) par : ${prop.titre} (${prop.type}, ${localisation(prop)}). Est-il toujours disponible ? Quand puis-je visiter ?`;
     document.getElementById('modal-title').textContent = prop.titre;
     document.getElementById('modal-content').innerHTML = `
       <div class="mb-6">
-        <div class="relative rounded-xl overflow-hidden h-96 bg-gray-100">
+        <div class="relative rounded-xl overflow-hidden h-64 sm:h-96 bg-gray-100">
           <div id="carousel-container" class="carousel-container flex overflow-x-auto h-full">
-            ${prop.images.map((img, i) => `
+            ${prop.images.map((src, i) => `
               <div class="carousel-slide w-full h-full flex-shrink-0">
-                <img src="${img}" alt="${prop.titre} - Photo ${i+1}" class="w-full h-full object-cover">
-              </div>
-            `).join('')}
+                <img src="${src}" alt="${prop.titre} - Photo ${i + 1}" class="w-full h-full object-cover">
+              </div>`).join('')}
           </div>
           ${prop.images.length > 1 ? `
-            <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition shadow-lg">
+            <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition shadow-lg" aria-label="Photo précédente">
               <i class="fas fa-chevron-left text-primary"></i>
             </button>
-            <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition shadow-lg">
+            <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition shadow-lg" aria-label="Photo suivante">
               <i class="fas fa-chevron-right text-primary"></i>
             </button>
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-              ${prop.images.map((_, i) => `
-                <button onclick="goToSlide(${i})" class="w-2 h-2 rounded-full transition ${i === 0 ? 'bg-white w-8' : 'bg-white/50'}"></button>
-              `).join('')}
-            </div>
-          ` : ''}
+            <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+              ${prop.images.map((_, i) => `<button onclick="goToSlide(${i})" class="h-2 rounded-full transition ${i === 0 ? 'bg-white w-8' : 'bg-white/50 w-2'}"></button>`).join('')}
+            </div>` : ''}
         </div>
       </div>
 
@@ -721,58 +723,31 @@ tailwind.config = {
         <div class="lg:col-span-2">
           <div class="flex flex-wrap gap-2 mb-6">
             <span class="bg-blue-100 text-primary px-4 py-2 rounded-lg font-semibold text-sm">${prop.type}</span>
-            <span class="bg-gray-100 text-secondary px-4 py-2 rounded-lg font-semibold text-sm">
-              <i class="fas fa-map-marker-alt mr-1"></i> ${prop.localisation}
-            </span>
+            <span class="bg-gray-100 text-secondary px-4 py-2 rounded-lg font-semibold text-sm"><i class="fas fa-map-marker-alt mr-1"></i> ${localisation(prop)}</span>
           </div>
-
           <h4 class="text-xl font-bold text-dark mb-3">Description</h4>
           <p class="text-secondary leading-relaxed mb-6">${prop.description}</p>
-
           <h4 class="text-xl font-bold text-dark mb-4">Caractéristiques</h4>
           <div class="grid sm:grid-cols-2 gap-3 mb-6">
-            ${prop.caracteristiques.map(carac => `
+            ${prop.caracteristiques.map(c => `
               <div class="flex items-center space-x-3 bg-light px-4 py-3 rounded-lg">
                 <i class="fas fa-check-circle text-primary"></i>
-                <span class="text-sm text-secondary">${carac}</span>
-              </div>
-            `).join('')}
+                <span class="text-sm text-secondary">${c}</span>
+              </div>`).join('')}
           </div>
         </div>
 
         <div>
-          <div class="bg-light rounded-xl p-6 sticky top-4">
-            <div class="text-sm text-secondary mb-2">Prix de vente</div>
-            <div class="text-4xl font-extrabold text-primary mb-6">${formatPrice(prop.prix)}</div>
-
-            <div class="space-y-4 mb-6 pb-6 border-b border-gray-200">
-              ${prop.surface > 0 ? `<div class="flex items-center justify-between">
-                <span class="text-secondary"><i class="fas fa-ruler-combined text-primary mr-2"></i>Surface</span>
-                <span class="font-bold text-dark">${prop.surface} m²</span>
-              </div>` : ''}
-              ${prop.chambres > 0 ? `<div class="flex items-center justify-between">
-                <span class="text-secondary"><i class="fas fa-bed text-primary mr-2"></i>Chambres</span>
-                <span class="font-bold text-dark">${prop.chambres}</span>
-              </div>` : ''}
-              ${prop.salles_de_bain > 0 ? `<div class="flex items-center justify-between">
-                <span class="text-secondary"><i class="fas fa-bath text-primary mr-2"></i>Salles de bain</span>
-                <span class="font-bold text-dark">${prop.salles_de_bain}</span>
-              </div>` : ''}
-              <div class="flex items-center justify-between">
-                <span class="text-secondary"><i class="fas fa-home text-primary mr-2"></i>Type</span>
-                <span class="font-bold text-dark">${prop.type}</span>
-              </div>
-            </div>
-
+          <div class="bg-light rounded-xl p-6">
+            <div class="text-sm text-secondary mb-2">${prop.transaction === 'Location' ? 'Loyer mensuel' : 'Prix de vente'}</div>
+            <div class="text-3xl font-extrabold text-primary mb-6">${priceLabel(prop)}</div>
+            ${conditionsHtml(prop)}
             <div class="space-y-3">
-              <a href="tel:0151352416" class="w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold text-center block hover:bg-blue-800 transition">
+              <a href="${waLink(message)}" target="_blank" rel="noopener" class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold text-center block hover:bg-green-600 transition">
+                <i class="fab fa-whatsapp mr-2"></i>Demander une visite
+              </a>
+              <a href="tel:+${WHATSAPP}" class="w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold text-center block hover:bg-blue-800 transition">
                 <i class="fas fa-phone-alt mr-2"></i>Appeler maintenant
-              </a>
-              <a href="https://wa.me/2290151352416?text=Bonjour, je suis intéressé par ${encodeURIComponent(prop.titre)}" target="_blank" class="w-full bg-green-500 text-white px-6 py-3 rounded-lg font-semibold text-center block hover:bg-green-600 transition">
-                <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-              </a>
-              <a href="#contact" onclick="closeModal()" class="w-full bg-secondary text-white px-6 py-3 rounded-lg font-semibold text-center block hover:bg-gray-600 transition">
-                <i class="fas fa-envelope mr-2"></i>Demander info
               </a>
             </div>
           </div>
@@ -780,15 +755,9 @@ tailwind.config = {
       </div>
 
       <div class="mt-8">
-        <h4 class="text-xl font-bold text-dark mb-4">Localisation</h4>
+        <h4 class="text-xl font-bold text-dark mb-4">Localisation (quartier)</h4>
         <div class="rounded-xl overflow-hidden h-64 bg-gray-100">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126916.78774034722!2d2.320035!3d6.372465!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023556d3c3c3c3d%3A0x6b3c3c3c!2s${encodeURIComponent(prop.localisation)}!5e0!3m2!1sfr!2sfr!4v1234567890" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            loading="lazy">
-          </iframe>
+          <iframe src="https://maps.google.com/maps?q=${encodeURIComponent(localisation(prop) + ', Bénin')}&z=14&output=embed" title="Carte ${localisation(prop)}" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
         </div>
       </div>
     `;
@@ -806,38 +775,26 @@ tailwind.config = {
     document.body.style.overflow = '';
   };
 
-  window.changeSlide = function(direction) {
-    const container = document.getElementById('carousel-container');
-    const slides = container.querySelectorAll('.carousel-slide');
-    currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    container.scrollTo({ left: currentSlide * container.clientWidth, behavior: 'smooth' });
-    updateDots();
-  };
-
   window.goToSlide = function(index) {
     const container = document.getElementById('carousel-container');
     currentSlide = index;
     container.scrollTo({ left: index * container.clientWidth, behavior: 'smooth' });
-    updateDots();
+    document.querySelectorAll('#carousel-dots button').forEach((dot, i) => {
+      dot.classList.toggle('bg-white', i === currentSlide);
+      dot.classList.toggle('w-8', i === currentSlide);
+      dot.classList.toggle('bg-white/50', i !== currentSlide);
+      dot.classList.toggle('w-2', i !== currentSlide);
+    });
   };
 
-  function updateDots() {
-    const dots = document.querySelectorAll('#modal-content .absolute.bottom-4 button');
-    dots.forEach((dot, i) => {
-      if (i === currentSlide) {
-        dot.classList.remove('bg-white/50', 'w-2');
-        dot.classList.add('bg-white', 'w-8');
-      } else {
-        dot.classList.remove('bg-white', 'w-8');
-        dot.classList.add('bg-white/50', 'w-2');
-      }
-    });
-  }
+  window.changeSlide = function(direction) {
+    const count = document.querySelectorAll('#carousel-container .carousel-slide').length;
+    goToSlide((currentSlide + direction + count) % count);
+  };
 
   // Event Listeners
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+    document.getElementById('mobile-menu').classList.toggle('hidden');
     const icon = this.querySelector('i');
     icon.classList.toggle('fa-bars');
     icon.classList.toggle('fa-times');
@@ -846,47 +803,48 @@ tailwind.config = {
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.add('hidden');
-      document.querySelector('#mobile-menu-btn i').classList.remove('fa-times');
-      document.querySelector('#mobile-menu-btn i').classList.add('fa-bars');
+      const icon = document.querySelector('#mobile-menu-btn i');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
     });
   });
 
-  document.getElementById('filter-type').addEventListener('change', applyFilters);
-  document.getElementById('filter-quartier').addEventListener('change', applyFilters);
-  document.getElementById('filter-prix').addEventListener('change', applyFilters);
-  document.getElementById('filter-surface').addEventListener('change', applyFilters);
-
-  document.getElementById('reset-filters').addEventListener('click', function() {
-    document.getElementById('filter-type').value = 'all';
-    document.getElementById('filter-quartier').value = 'all';
-    document.getElementById('filter-prix').value = 'all';
-    document.getElementById('filter-surface').value = 'all';
-    applyFilters();
+  document.querySelectorAll('.tab-btn, .hero-tab').forEach(btn => {
+    btn.addEventListener('click', () => setTransaction(btn.dataset.transaction));
   });
+
+  ['filter-type', 'filter-zone', 'filter-prix'].forEach(id => {
+    document.getElementById(id).addEventListener('change', applyFilters);
+  });
+
+  document.getElementById('reset-filters').addEventListener('click', () => setTransaction(transaction));
 
   document.getElementById('close-modal').addEventListener('click', closeModal);
   document.getElementById('property-modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Merci pour votre message ! Notre équipe vous contactera dans les plus brefs délais.');
+    const val = id => document.getElementById(id).value.trim();
+    const lines = [
+      'Bonjour Soha Immo,',
+      `Je m'appelle ${val('cf-nom')} (${val('cf-tel')}).`,
+      `Je souhaite : ${val('cf-sujet')}.`,
+      val('cf-budget') ? `Budget : ${val('cf-budget')}` : '',
+      val('cf-message')
+    ].filter(Boolean);
+    window.open(waLink(lines.join('\n')), '_blank', 'noopener');
     this.reset();
   });
 
-  // Header scroll effect
   window.addEventListener('scroll', function() {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-      header.classList.add('shadow-lg');
-    } else {
-      header.classList.remove('shadow-lg');
-    }
+    document.getElementById('header').classList.toggle('shadow-lg', window.scrollY > 50);
   });
 
   // Init
-  renderProperties(properties);
+  setTransaction('Location');
 </script>
 
 </body>
